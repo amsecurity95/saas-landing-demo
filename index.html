@@ -515,5 +515,16 @@ footer { padding: 64px 32px 40px; border-top: 1px solid var(--border); }
     mobileMenu.classList.toggle('open');
   });
 </script>
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  lucide.createIcons();
+  AOS.init({ duration: 600, once: true, offset: 60 });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  }
+</script>
 </body>
 </html>

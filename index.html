@@ -11,7 +11,6 @@
 <script src="https://unpkg.com/lucide@latest"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 :root {
   --bg: #ffffff;
   --text: #0f0f0f;
@@ -23,9 +22,7 @@
   --max: 1100px;
   --radius: 12px;
 }
-
 html { scroll-behavior: smooth; }
-
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--bg);
@@ -34,10 +31,7 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
-
 a { color: inherit; text-decoration: none; }
-
-/* ── NAV ── */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -47,7 +41,6 @@ nav {
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
 }
-
 .nav-inner {
   max-width: var(--max);
   margin: 0 auto;
@@ -57,86 +50,21 @@ nav {
   justify-content: space-between;
   height: 64px;
 }
-
-.logo {
-  font-size: 1.05rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--text);
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 36px;
-  list-style: none;
-}
-
-.nav-links a {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--muted);
-  transition: color 0.2s;
-}
+.logo { font-size: 1.05rem; font-weight: 700; letter-spacing: -0.02em; }
+.nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+.nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--muted); transition: color 0.2s; }
 .nav-links a:hover { color: var(--text); }
-
 .nav-cta { display: flex; align-items: center; gap: 12px; }
-
-.btn-ghost {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--muted);
-  background: none;
-  border: none;
-  cursor: pointer;
-  transition: color 0.2s;
-}
+.btn-ghost { font-size: 0.875rem; font-weight: 500; color: var(--muted); background: none; border: none; cursor: pointer; transition: color 0.2s; }
 .btn-ghost:hover { color: var(--text); }
-
-.btn-primary {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--accent-text);
-  background: var(--accent);
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  cursor: pointer;
-  transition: opacity 0.2s, transform 0.15s;
-}
+.btn-primary { font-size: 0.875rem; font-weight: 600; color: var(--accent-text); background: var(--accent); border: none; border-radius: 8px; padding: 10px 20px; cursor: pointer; transition: opacity 0.2s, transform 0.15s; }
 .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
-
-.hamburger {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-  color: var(--text);
-}
-
-.mobile-menu {
-  display: none;
-  position: fixed;
-  top: 64px; left: 0; right: 0;
-  background: #fff;
-  border-bottom: 1px solid var(--border);
-  padding: 24px 32px;
-  flex-direction: column;
-  gap: 20px;
-  z-index: 99;
-}
+.hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; color: var(--text); }
+.mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--border); padding: 24px 32px; flex-direction: column; gap: 20px; z-index: 99; }
 .mobile-menu.open { display: flex; }
-.mobile-menu a {
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--muted);
-  transition: color 0.2s;
-}
+.mobile-menu a { font-size: 1rem; font-weight: 500; color: var(--muted); transition: color 0.2s; }
 .mobile-menu a:hover { color: var(--text); }
-.mobile-menu .btn-primary { text-align: center; border-radius: 8px; }
-
-/* ── HERO ── */
+.mobile-menu .btn-primary { text-align: center; }
 .hero {
   min-height: 100vh;
   display: flex;
@@ -145,463 +73,108 @@ nav {
   text-align: center;
   padding: 120px 32px 80px;
 }
-
 .hero-inner { max-width: 680px; }
-
 .hero h1 {
   font-size: clamp(2.8rem, 6vw, 5rem);
   font-weight: 700;
   line-height: 1.08;
   letter-spacing: -0.03em;
   margin-bottom: 24px;
-  color: var(--text);
 }
-
 .hero p {
   font-size: 1.125rem;
   color: var(--muted);
   line-height: 1.7;
   margin-bottom: 40px;
-  font-weight: 400;
   max-width: 520px;
   margin-left: auto;
   margin-right: auto;
 }
-
-.hero-actions {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.hero-actions .btn-primary {
-  font-size: 0.9rem;
-  padding: 13px 28px;
-  border-radius: 8px;
-}
-
-.hero-actions .btn-ghost {
-  font-size: 0.9rem;
-  color: var(--muted);
-}
-
-.hero-note {
-  margin-top: 20px;
-  font-size: 0.8rem;
-  color: #9ca3af;
-}
-
-/* ── SOCIAL PROOF ── */
-.logos-bar {
-  padding: 48px 32px;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-
-.logos-bar-inner {
-  max-width: var(--max);
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 40px;
-}
-
-.logos-label {
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: #9ca3af;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  width: 100%;
-  text-align: center;
-  margin-bottom: 8px;
-}
-
-.logo-item {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #9ca3af;
-  letter-spacing: -0.02em;
-  transition: color 0.2s;
-}
+.hero-actions { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.hero-actions .btn-primary { font-size: 0.9rem; padding: 13px 28px; }
+.hero-actions .btn-ghost { font-size: 0.9rem; }
+.logos-bar { padding: 48px 32px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.logos-bar-inner { max-width: var(--max); margin: 0 auto; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 40px; }
+.logos-label { font-size: 0.8rem; font-weight: 500; color: #9ca3af; letter-spacing: 0.06em; text-transform: uppercase; width: 100%; text-align: center; margin-bottom: 8px; }
+.logo-item { font-size: 0.95rem; font-weight: 700; color: #9ca3af; letter-spacing: -0.02em; transition: color 0.2s; }
 .logo-item:hover { color: var(--text); }
-
-/* ── SECTION SHARED ── */
 section { padding: 96px 32px; }
-
-.section-inner {
-  max-width: var(--max);
-  margin: 0 auto;
-}
-
-.section-label {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--muted);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
-
-.section-title {
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  line-height: 1.15;
-  margin-bottom: 16px;
-  color: var(--text);
-}
-
-.section-sub {
-  font-size: 1.05rem;
-  color: var(--muted);
-  line-height: 1.7;
-  max-width: 520px;
-}
-
-/* ── FEATURES ── */
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
-  margin-top: 64px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  overflow: hidden;
-}
-
-.feature-card {
-  padding: 40px 36px;
-  background: var(--bg);
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  transition: background 0.2s;
-}
+.section-inner { max-width: var(--max); margin: 0 auto; }
+.section-label { font-size: 0.78rem; font-weight: 600; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; }
+.section-title { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 16px; }
+.section-sub { font-size: 1.05rem; color: var(--muted); line-height: 1.7; max-width: 520px; }
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 64px; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.feature-card { padding: 40px 36px; background: var(--bg); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); transition: background 0.2s; }
 .feature-card:hover { background: var(--surface); }
-
-.feature-icon {
-  width: 44px; height: 44px;
-  display: flex; align-items: center; justify-content: center;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  margin-bottom: 20px;
-  color: var(--text);
-}
-
-.feature-card h3 {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-  letter-spacing: -0.015em;
-}
-
-.feature-card p {
-  font-size: 0.9rem;
-  color: var(--muted);
-  line-height: 1.65;
-}
-
-/* ── HOW IT WORKS ── */
-.steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 48px;
-  margin-top: 64px;
-}
-
-.step { position: relative; }
-
-.step-number {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--muted);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
-
-.step h3 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  margin-bottom: 10px;
-}
-
-.step p {
-  font-size: 0.9rem;
-  color: var(--muted);
-  line-height: 1.65;
-}
-
-/* ── TESTIMONIALS ── */
-.testimonials { background: var(--surface); }
-
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 64px;
-}
-
-.testimonial-card {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 32px;
-}
-
-.stars {
-  display: flex;
-  gap: 3px;
-  margin-bottom: 16px;
-  color: var(--text);
-}
-
-.testimonial-card p {
-  font-size: 0.925rem;
-  line-height: 1.7;
-  color: var(--text);
-  margin-bottom: 24px;
-}
-
-.testimonial-author {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.author-avatar {
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--muted);
-  overflow: hidden;
-}
-
-.author-avatar img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-}
-
-.author-info strong {
-  display: block;
-  font-size: 0.875rem;
-  font-weight: 600;
-}
-
-.author-info span {
-  font-size: 0.8rem;
-  color: var(--muted);
-}
-
-/* ── PRICING ── */
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 64px;
-  align-items: start;
-}
-
-.pricing-card {
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 36px 32px;
-  position: relative;
-}
-
-.pricing-card.featured {
-  background: var(--text);
-  color: var(--accent-text);
-  border-color: var(--text);
-}
-
-.pricing-card.featured .muted { color: rgba(255,255,255,0.6); }
-.pricing-card.featured .feature-list li { color: rgba(255,255,255,0.85); }
-.pricing-card.featured .feature-list li::before { color: rgba(255,255,255,0.5); }
-
-.plan-name {
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 16px;
-}
-.pricing-card.featured .plan-name { color: rgba(255,255,255,0.6); }
-
-.plan-price {
-  font-size: 2.8rem;
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  line-height: 1;
-  margin-bottom: 6px;
-}
-
-.plan-price sup {
-  font-size: 1.2rem;
-  font-weight: 600;
-  vertical-align: super;
-  letter-spacing: 0;
-}
-
-.plan-period {
-  font-size: 0.85rem;
-  color: var(--muted);
-  margin-bottom: 28px;
-}
-.pricing-card.featured .plan-period { color: rgba(255,255,255,0.6); }
-
-.feature-list {
-  list-style: none;
-  margin-bottom: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.feature-list li {
-  font-size: 0.9rem;
-  color: var(--muted);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.feature-list li i {
-  flex-shrink: 0;
-  width: 16px; height: 16px;
-}
-
-.btn-outline {
-  width: 100%;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--text);
-  background: none;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 12px;
-  cursor: pointer;
-  transition: background 0.2s, border-color 0.2s;
-}
+.feature-icon { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 20px; color: var(--text); }
+.feature-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 10px; }
+.feature-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+.how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 64px; }
+.how-step { }
+.step-num { font-size: 0.78rem; font-weight: 700; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 16px; }
+.how-step h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 10px; }
+.how-step p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 64px; }
+.pricing-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 40px 36px; background: var(--bg); display: flex; flex-direction: column; }
+.pricing-card.featured { background: var(--text); color: var(--accent-text); border-color: var(--text); }
+.pricing-card.featured .muted { color: #9ca3af; }
+.pricing-card.featured .btn-outline { background: #fff; color: #000; border-color: #fff; }
+.plan-name { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 24px; color: var(--muted); }
+.pricing-card.featured .plan-name { color: #9ca3af; }
+.plan-price { font-size: 3rem; font-weight: 700; letter-spacing: -0.04em; line-height: 1; margin-bottom: 8px; }
+.plan-period { font-size: 0.875rem; color: var(--muted); margin-bottom: 32px; }
+.pricing-card.featured .plan-period { color: #9ca3af; }
+.plan-features { list-style: none; margin-bottom: 40px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+.plan-features li { font-size: 0.9rem; display: flex; align-items: center; gap: 10px; }
+.plan-features li svg { flex-shrink: 0; }
+.btn-outline { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; background: none; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: background 0.2s, color 0.2s; }
 .btn-outline:hover { background: var(--surface); }
-
-.btn-primary-full {
-  width: 100%;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--text);
-  background: #ffffff;
-  border: none;
-  border-radius: 8px;
-  padding: 12px;
-  cursor: pointer;
-  transition: opacity 0.2s;
-}
-.btn-primary-full:hover { opacity: 0.88; }
-
-/* ── CTA BAND ── */
-.cta-band {
-  background: var(--text);
-  color: var(--accent-text);
-  text-align: center;
-  padding: 96px 32px;
-}
-
-.cta-band h2 {
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  margin-bottom: 16px;
-}
-
-.cta-band p {
-  font-size: 1.05rem;
-  color: rgba(255,255,255,0.65);
-  margin-bottom: 36px;
-  max-width: 480px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.cta-band .btn-white {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--text);
-  background: #ffffff;
-  border: none;
-  border-radius: 8px;
-  padding: 13px 28px;
-  cursor: pointer;
-  transition: opacity 0.2s, transform 0.15s;
-}
-.cta-band .btn-white:hover { opacity: 0.88; transform: translateY(-1px); }
-
-/* ── FOOTER ── */
-footer {
-  border-top: 1px solid var(--border);
-  padding: 48px 32px;
-}
-
-.footer-inner {
-  max-width: var(--max);
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 24px;
-}
-
-.footer-logo {
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-
-.footer-links {
-  display: flex;
-  gap: 28px;
-  list-style: none;
-}
-
-.footer-links a {
-  font-size: 0.85rem;
-  color: var(--muted);
-  transition: color 0.2s;
-}
-.footer-links a:hover { color: var(--text); }
-
-.footer-copy {
-  font-size: 0.8rem;
-  color: #9ca3af;
-}
-
-/* ── RESPONSIVE ── */
+.btn-filled { width: 100%; padding: 12px; border: none; border-radius: 8px; background: #fff; color: #000; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
+.btn-filled:hover { opacity: 0.88; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 64px; }
+.testimonial-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; background: var(--bg); }
+.testimonial-card blockquote { font-size: 0.95rem; line-height: 1.7; color: var(--text); margin-bottom: 24px; }
+.testimonial-author { display: flex; align-items: center; gap: 12px; }
+.author-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; background: var(--surface); }
+.author-name { font-size: 0.875rem; font-weight: 600; }
+.author-title { font-size: 0.8rem; color: var(--muted); }
+.faq-list { margin-top: 64px; display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-item:last-child { border-bottom: none; }
+.faq-q { width: 100%; background: none; border: none; padding: 24px 28px; display: flex; align-items: center; justify-content: space-between; font-size: 0.95rem; font-weight: 600; text-align: left; cursor: pointer; transition: background 0.2s; }
+.faq-q:hover { background: var(--surface); }
+.faq-a { display: none; padding: 0 28px 24px; font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+.faq-a.open { display: block; }
+.cta-section { background: var(--text); color: var(--accent-text); text-align: center; }
+.cta-section .section-title { color: #fff; }
+.cta-section .section-sub { color: #9ca3af; margin: 0 auto 40px; }
+.cta-actions { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.btn-white { font-size: 0.9rem; font-weight: 600; color: #000; background: #fff; border: none; border-radius: 8px; padding: 13px 28px; cursor: pointer; transition: opacity 0.2s; }
+.btn-white:hover { opacity: 0.88; }
+.btn-ghost-white { font-size: 0.9rem; font-weight: 500; color: #9ca3af; background: none; border: none; cursor: pointer; transition: color 0.2s; }
+.btn-ghost-white:hover { color: #fff; }
+footer { padding: 64px 32px 40px; border-top: 1px solid var(--border); }
+.footer-inner { max-width: var(--max); margin: 0 auto; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+.footer-brand p { font-size: 0.875rem; color: var(--muted); line-height: 1.7; margin-top: 12px; max-width: 260px; }
+.footer-col h4 { font-size: 0.85rem; font-weight: 600; margin-bottom: 16px; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul li a { font-size: 0.875rem; color: var(--muted); transition: color 0.2s; }
+.footer-col ul li a:hover { color: var(--text); }
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 32px; border-top: 1px solid var(--border); }
+.footer-bottom p { font-size: 0.8rem; color: var(--muted); }
+.footer-social { display: flex; gap: 16px; }
+.footer-social a { color: var(--muted); transition: color 0.2s; }
+.footer-social a:hover { color: var(--text); }
 @media (max-width: 768px) {
   .nav-links, .nav-cta { display: none; }
-  .hamburger { display: block; }
-  .features-grid { grid-template-columns: 1fr; }
-  .steps { grid-template-columns: 1fr; gap: 36px; }
-  .testimonials-grid { grid-template-columns: 1fr; }
-  .pricing-grid { grid-template-columns: 1fr; }
-  .footer-inner { flex-direction: column; align-items: flex-start; }
+  .hamburger { display: flex; }
+  .features-grid, .how-grid, .pricing-grid, .testimonials-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
 }
 </style>
 </head>
 <body>
-
-<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <span class="logo">FlowSync</span>
@@ -609,26 +182,25 @@ footer {
       <li><a href="#features">Features</a></li>
       <li><a href="#how">How it works</a></li>
       <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
     </ul>
     <div class="nav-cta">
       <button class="btn-ghost">Log in</button>
       <button class="btn-primary">Get started</button>
     </div>
-    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
-      <i data-lucide="menu" style="width:22px;height:22px;"></i>
+    <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+      <i data-lucide="menu" width="22" height="22"></i>
     </button>
   </div>
 </nav>
-
-<div class="mobile-menu" id="mobileMenu">
+<div class="mobile-menu">
   <a href="#features">Features</a>
   <a href="#how">How it works</a>
   <a href="#pricing">Pricing</a>
-  <a href="#">Log in</a>
+  <a href="#faq">FAQ</a>
   <button class="btn-primary">Get started</button>
 </div>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
     <h1>Ship faster,<br>together.</h1>
@@ -640,501 +212,224 @@ footer {
   </div>
 </section>
 
-<!-- LOGOS BAR -->
 <div class="logos-bar">
   <div class="logos-bar-inner">
-    <p class="logos-label">Trusted by teams at</p>
-    <span class="logo-item">Notion</span>
+    <span class="logos-label">Trusted by teams at</span>
     <span class="logo-item">Linear</span>
     <span class="logo-item">Vercel</span>
+    <span class="logo-item">Notion</span>
     <span class="logo-item">Stripe</span>
-    <span class="logo-item">Figma</span>
     <span class="logo-item">Loom</span>
+    <span class="logo-item">Figma</span>
   </div>
 </div>
 
-<!-- FEATURES -->
 <section id="features">
   <div class="section-inner">
-    <p class="section-label">Features</p>
-    <h2 class="section-title">Everything your team needs.<br>Nothing it doesn't.</h2>
-    <p class="section-sub">Built for modern teams who care about focus, speed, and clean workflows.</p>
+    <div class="section-label">Features</div>
+    <h2 class="section-title">Everything your team needs</h2>
+    <p class="section-sub">Built for modern teams who move fast and need tools that keep up.</p>
     <div class="features-grid">
       <div class="feature-card">
-        <div class="feature-icon"><i data-lucide="zap" style="width:20px;height:20px;"></i></div>
+        <div class="feature-icon"><i data-lucide="zap" width="20" height="20"></i></div>
         <h3>Instant sync</h3>
-        <p>Changes reflect across your team in real time — no refresh, no lag, no friction.</p>
+        <p>Changes reflect across your whole team in real time. No refresh needed, no version conflicts.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon"><i data-lucide="layers" style="width:20px;height:20px;"></i></div>
+        <div class="feature-icon"><i data-lucide="layout-dashboard" width="20" height="20"></i></div>
         <h3>Unified workspace</h3>
-        <p>Docs, tasks, and conversations live in one place. Context always at hand.</p>
+        <p>Tasks, docs, and conversations in one place. Stop switching between five tools to get one thing done.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon"><i data-lucide="shield-check" style="width:20px;height:20px;"></i></div>
+        <div class="feature-icon"><i data-lucide="bar-chart-2" width="20" height="20"></i></div>
+        <h3>Progress at a glance</h3>
+        <p>Visual dashboards that show exactly where every project stands. Always.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i data-lucide="lock" width="20" height="20"></i></div>
         <h3>Enterprise security</h3>
-        <p>SOC 2 Type II, SSO, and fine-grained permissions built in from day one.</p>
+        <p>SOC 2 Type II certified. SSO, audit logs, and granular permissions included on every plan.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon"><i data-lucide="bar-chart-2" style="width:20px;height:20px;"></i></div>
-        <h3>Smart analytics</h3>
-        <p>Track velocity, blockers, and output across every project with one dashboard.</p>
+        <div class="feature-icon"><i data-lucide="plug" width="20" height="20"></i></div>
+        <h3>Deep integrations</h3>
+        <p>Connect GitHub, Slack, Figma, and 80+ tools. FlowSync fits into how you already work.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon"><i data-lucide="git-branch" style="width:20px;height:20px;"></i></div>
-        <h3>GitHub integration</h3>
-        <p>Pull requests, commits, and deploys surface automatically in your workflow.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i data-lucide="cpu" style="width:20px;height:20px;"></i></div>
-        <h3>AI assistance</h3>
-        <p>Summaries, action items, and smart suggestions — always in context, never intrusive.</p>
+        <div class="feature-icon"><i data-lucide="cpu" width="20" height="20"></i></div>
+        <h3>AI assist</h3>
+        <p>Auto-summarize threads, generate task breakdowns, and surface blockers before they slow you down.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
 <section id="how" style="background: var(--surface);">
   <div class="section-inner">
-    <p class="section-label">How it works</p>
-    <h2 class="section-title">Up and running<br>in minutes.</h2>
-    <p class="section-sub">No onboarding calls. No setup fees. Just a workspace that works.</p>
-    <div class="steps">
-      <div class="step">
-        <p class="step-number">01</p>
+    <div class="section-label">How it works</div>
+    <h2 class="section-title">Up and running in minutes</h2>
+    <p class="section-sub">No lengthy onboarding. No consultant required. Just sign up and go.</p>
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="step-num">01</div>
         <h3>Create your workspace</h3>
-        <p>Sign up in seconds, invite your team, and you're in. No credit card required.</p>
+        <p>Set up your team in under two minutes. Invite members, set roles, and you're ready.</p>
       </div>
-      <div class="step">
-        <p class="step-number">02</p>
+      <div class="how-step">
+        <div class="step-num">02</div>
         <h3>Connect your tools</h3>
-        <p>GitHub, Slack, Figma — plug in what you already use. FlowSync meets your stack.</p>
+        <p>Link GitHub, Slack, Notion, or whatever you use. FlowSync pulls everything into one view.</p>
       </div>
-      <div class="step">
-        <p class="step-number">03</p>
+      <div class="how-step">
+        <div class="step-num">03</div>
         <h3>Ship together</h3>
-        <p>Assign, track, and close work as a team. Everything moves, nothing gets lost.</p>
+        <p>Track progress, unblock teammates, and close work faster than you ever did before.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="testimonials" id="testimonials">
-  <div class="section-inner">
-    <p class="section-label">Testimonials</p>
-    <h2 class="section-title">Teams love it.</h2>
-    <p class="section-sub">Real feedback from real teams who switched to FlowSync.</p>
-    <div class="testimonials-grid">
-      <div class="testimonial-card">
-        <div class="stars">
-          <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
-          <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
-          <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
-          <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
-          <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
-        </div>
-        <p>"FlowSync cut our standup time in half. Everything is just… there."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=72&q=80" alt="Sarah"></div>
-          <div class="author-info"><strong>Sarah K.</strong><span>Engineering Lead, Vercel</span></div>
-        </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">
-          <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
-          <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
-          <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
-          <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
-          <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
-        </div>
-        <p>"The GitHub integration alone was worth the switch. Context stays where we work."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=72&q=80" alt="Marcus"></div>
-          <div class="author-info"><strong>Marcus T.</strong><span>CTO, Linear</span></div>
-        </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">
-          <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
-          <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
-          <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
-          <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
-          <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
-        </div>
-        <p>"Finally a tool our designers and devs both actually use. No more switching apps."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=72&q=80" alt="Priya"></div>
-          <div class="author-info"><strong>Priya M.</strong><span>Product Manager, Figma</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
 <section id="pricing">
   <div class="section-inner">
-    <p class="section-label">Pricing</p>
-    <h2 class="section-title">Simple, honest pricing.</h2>
-    <p class="section-sub">No hidden fees. No per-seat surprises. Just pick your plan and ship.</p>
+    <div class="section-label">Pricing</div>
+    <h2 class="section-title">Simple, honest pricing</h2>
+    <p class="section-sub">No hidden fees. No surprise overages. Cancel any time.</p>
     <div class="pricing-grid">
       <div class="pricing-card">
-        <p class="plan-name">Starter</p>
-        <div class="plan-price"><sup>$</sup>0</div>
-        <p class="plan-period">Free forever</p>
-        <ul class="feature-list">
-          <li><i data-lucide="check" style="width:16px;height:16px;"></i> Up to 5 members</li>
-          <li><i data-lucide="check" style="width:16px;height:16px;"></i> 3 active projects</li>
-          <li><i data-lucide="check" style="width:16px;height:16px;"></i> Basic integrations</li>
-          <li><i data-lucide="check" style="width:16px;height:16px;"></i> 7-day history</li>
+        <div class="plan-name">Starter</div>
+        <div class="plan-price">$0</div>
+        <div class="plan-period">Free forever · up to 5 seats</div>
+        <ul class="plan-features">
+          <li><i data-lucide="check" width="16" height="16"></i> 3 active projects</li>
+          <li><i data-lucide="check" width="16" height="16"></i> 1 GB storage</li>
+          <li><i data-lucide="check" width="16" height="16"></i> Core integrations</li>
+          <li><i data-lucide="check" width="16" height="16"></i> Community support</li>
         </ul>
         <button class="btn-outline">Get started free</button>
       </div>
       <div class="pricing-card featured">
-        <p class="plan-name">Pro</p>
-        <div class="plan-price"><sup>$</sup>18</div>
-        <p class="plan-period">per seat / month</p>
-        <ul class="feature-list">
-          <li><i data-lucide="check" style="width:16px;height:16px;"></i> Unlimited members</li>
-          <li><i data-lucide="check" style="width:16px;height:16px;"></i> Unlimited projects</li>
-          <li><i data-lucide="check" style="width:16px;height:16px;border-bottom: 1px solid var(--border);
-}
+        <div class="plan-name">Pro</div>
+        <div class="plan-price">$18</div>
+        <div class="plan-period">per seat / month</div>
+        <ul class="plan-features">
+          <li><i data-lucide="check" width="16" height="16"></i> Unlimited projects</li>
+          <li><i data-lucide="check" width="16" height="16"></i> 50 GB storage</li>
+          <li><i data-lucide="check" width="16" height="16"></i> All integrations</li>
+          <li><i data-lucide="check" width="16" height="16"></i> AI assist</li>
+          <li><i data-lucide="check" width="16" height="16"></i> Priority support</li>
+        </ul>
+        <button class="btn-filled">Start free trial</button>
+      </div>
+      <div class="pricing-card">
+        <div class="plan-name">Enterprise</div>
+        <div class="plan-price">Custom</div>
+        <div class="plan-period">Volume pricing available</div>
+        <ul class="plan-features">
+          <li><i data-lucide="check" width="16" height="16"></i> Everything in Pro</li>
+          <li><i data-lucide="check" width="16" height="16"></i> SSO & SCIM</li>
+          <li><i data-lucide="check" width="16" height="16"></i> Audit logs</li>
+          <li><i data-lucide="check" width="16" height="16"></i> SLA guarantee</li>
+          <li><i data-lucide="check" width="16" height="16"></i> Dedicated CSM</li>
+        </ul>
+        <button class="btn-outline">Talk to sales</button>
+      </div>
+    </div>
+  </div>
+</section>
 
-.feature-card:last-child { border-right: none; }
-.feature-card:nth-child(n+4) { border-bottom: none; }
+<section id="testimonials" style="background: var(--surface);">
+  <div class="section-inner">
+    <div class="section-label">Testimonials</div>
+    <h2 class="section-title">Teams that made the switch</h2>
+    <p class="section-sub">Don't take our word for it.</p>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <blockquote>"FlowSync cut our weekly syncs from three meetings down to one. The async visibility is just that good."</blockquote>
+        <div class="testimonial-author">
+          <img class="author-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&q=80" alt="Sara Kim" />
+          <div>
+            <div class="author-name">Sara Kim</div>
+            <div class="author-title">Head of Product, Loom</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <blockquote>"We evaluated six tools. FlowSync was the only one our engineers didn't immediately complain about."</blockquote>
+        <div class="testimonial-author">
+          <img class="author-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80" alt="Marcus Webb" />
+          <div>
+            <div class="author-name">Marcus Webb</div>
+            <div class="author-title">CTO, Daylight</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <blockquote>"Our remote team finally feels like we're in the same room. Shipping velocity is up 40% since we switched."</blockquote>
+        <div class="testimonial-author">
+          <img class="author-avatar" src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=80&q=80" alt="Priya Nair" />
+          <div>
+            <div class="author-name">Priya Nair</div>
+            <div class="author-title">Engineering Manager, Scale AI</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-.feature-icon {
-  width: 44px; height: 44px;
-  margin-bottom: 24px;
-  color: var(--text);
-}
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Questions we get a lot</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>Is there a free plan?</span>
+          <i data-lucide="chevron-down" width="18" height="18"></i>
+        </button>
+        <div class="faq-a">Yes — the Starter plan is free forever for teams up to 5 seats. No credit card required.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>Can I migrate from another tool?</span>
+          <i data-lucide="chevron-down" width="18" height="18"></i>
+        </button>
+        <div class="faq-a">We support one-click imports from Asana, Jira, Linear, and Notion. Most teams are fully migrated within a day.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>How does billing work for growing teams?</span>
+          <i data-lucide="chevron-down" width="18" height="18"></i>
+        </button>
+        <div class="faq-a">You're billed per seat, prorated daily. Add or remove members any time and your invoice adjusts automatically.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>What's your uptime SLA?</span>
+          <i data-lucide="chevron-down" width="18" height="18"></i>
+        </button>
+        <div class="faq-a">99.9% uptime on Pro. Enterprise plans include a 99.99% SLA with dedicated infrastructure.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>Do you support SSO?</span>
+          <i data-lucide="chevron-down" width="18" height="18"></i>
+        </button>
+        <div class="faq-a">SSO via SAML 2.0 and SCIM provisioning are available on the Enterprise plan.</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-.feature-card h3 {
-  font-size: 1.05rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  margin-bottom: 10px;
-}
+<section class="cta-section">
+  <div class="section-inner">
+    <h2 class="section-title">Ready to move faster?</h2>
+    <p class="section-sub">Join thousands of teams already shipping with FlowSync.</p>
+    <div class="cta-actions">
+      <button class="btn-white">Start for free</button>
+      <button class="btn-ghost-white">Talk to sales →</button>
+    </div>
+  </div>
+</section>
 
-.feature-card p {
-  font-size: 0.9rem;
-  color: var(--muted);
-  line-height: 1.65;
-}
-
-/* ── HOW IT WORKS ── */
-.how-bg { background: var(--surface); }
-
-.steps-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  margin-top: 64px;
-}
-
-.step { text-align: center; }
-
-.step-num {
-  width: 48px; height: 48px;
-  border-radius: 50%;
-  background: var(--text);
-  color: var(--accent-text);
-  font-size: 0.95rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 20px;
-}
-
-.step h3 {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-  letter-spacing: -0.01em;
-}
-
-.step p {
-  font-size: 0.875rem;
-  color: var(--muted);
-  line-height: 1.65;
-}
-
-/* ── TESTIMONIALS ── */
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 64px;
-}
-
-.testimonial-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 32px;
-}
-
-.stars {
-  display: flex;
-  gap: 3px;
-  margin-bottom: 16px;
-  color: var(--text);
-}
-
-.testimonial-card p {
-  font-size: 0.9rem;
-  color: var(--muted);
-  line-height: 1.7;
-  margin-bottom: 24px;
-}
-
-.testimonial-author {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.author-avatar {
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  background: var(--border);
-  object-fit: cover;
-}
-
-.author-name {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--text);
-}
-
-.author-role {
-  font-size: 0.78rem;
-  color: var(--muted);
-}
-
-/* ── PRICING ── */
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 64px;
-}
-
-.pricing-card {
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 40px 32px;
-  display: flex;
-  flex-direction: column;
-}
-
-.pricing-card.featured {
-  background: var(--text);
-  color: var(--accent-text);
-  border-color: var(--text);
-}
-
-.pricing-tier {
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-  color: var(--muted);
-}
-
-.pricing-card.featured .pricing-tier { color: rgba(255,255,255,0.5); }
-
-.pricing-price {
-  font-size: 2.5rem;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  margin-bottom: 4px;
-}
-
-.pricing-period {
-  font-size: 0.85rem;
-  color: var(--muted);
-  margin-bottom: 28px;
-}
-
-.pricing-card.featured .pricing-period { color: rgba(255,255,255,0.5); }
-
-.pricing-features {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  flex: 1;
-  margin-bottom: 32px;
-}
-
-.pricing-features li {
-  font-size: 0.875rem;
-  color: var(--muted);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.pricing-card.featured .pricing-features li { color: rgba(255,255,255,0.75); }
-
-.check-icon {
-  width: 16px; height: 16px;
-  flex-shrink: 0;
-  color: var(--text);
-}
-
-.pricing-card.featured .check-icon { color: #fff; }
-
-.btn-outline {
-  font-size: 0.875rem;
-  font-weight: 600;
-  border: 1.5px solid var(--border);
-  border-radius: 8px;
-  padding: 12px 20px;
-  background: none;
-  cursor: pointer;
-  color: var(--text);
-  transition: background 0.2s, color 0.2s;
-  text-align: center;
-}
-.btn-outline:hover { background: var(--text); color: #fff; }
-.pricing-card.featured .btn-outline {
-  border-color: rgba(255,255,255,0.3);
-  color: #fff;
-}
-.pricing-card.featured .btn-outline:hover { background: rgba(255,255,255,0.15); }
-
-/* ── FAQ ── */
-.faq-bg { background: var(--surface); }
-
-.faq-list {
-  max-width: 680px;
-  margin: 64px auto 0;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.faq-item {
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.faq-q {
-  width: 100%;
-  text-align: left;
-  background: var(--bg);
-  border: none;
-  padding: 20px 24px;
-  font-size: 0.925rem;
-  font-weight: 600;
-  color: var(--text);
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: background 0.15s;
-  font-family: inherit;
-}
-.faq-q:hover { background: var(--surface); }
-
-.faq-chevron {
-  width: 18px; height: 18px;
-  transition: transform 0.25s;
-  flex-shrink: 0;
-  color: var(--muted);
-}
-
-.faq-a {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease, padding 0.3s;
-  background: var(--bg);
-  font-size: 0.875rem;
-  color: var(--muted);
-  line-height: 1.7;
-  padding: 0 24px;
-}
-
-.faq-item.open .faq-a { max-height: 200px; padding: 0 24px 20px; }
-.faq-item.open .faq-chevron { transform: rotate(180deg); }
-
-/* ── CTA SECTION ── */
-.cta-section {
-  text-align: center;
-  padding: 112px 32px;
-}
-
-.cta-section h2 {
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  line-height: 1.1;
-  margin-bottom: 20px;
-}
-
-.cta-section p {
-  font-size: 1.05rem;
-  color: var(--muted);
-  max-width: 460px;
-  margin: 0 auto 36px;
-  line-height: 1.7;
-}
-
-.cta-actions {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-/* ── FOOTER ── */
-footer {
-  border-top: 1px solid var(--border);
-  padding: 48px 32px;
-}
-
-.footer-inner {
-  max-width: var(--max);
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
-.footer-links {
-  display: flex;
-  gap: 28px;
-  list-style: none;
-}
-
-.footer-links a {
-  font-size: 0.825rem;
-  color: var(--muted);
-  transition: color 0.2s;
-}
-.footer-links a:hover { color: var(--text); }
-
-.footer-copy {
-  font-size: 0.8rem;
-  color: #9ca3af;
-}
-
-/* ── RESPONSIVE ── */
-@media (max-width: 768px) {
-  .nav-links, .nav-cta { display: none; }
-  .hamburger { display: block; }
-  .features-grid, .steps-grid, .testimonials-grid, .pricing-grid { grid-template-columns: 1fr; }
-  .feature-card { border-right: none; }
-  .hero h1 { font-size: 2.6rem; }
-}
-</body></html>
+<footer

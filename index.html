@@ -8,7 +8,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
 <script src="https://unpkg.com/lucide@latest"></script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -57,14 +59,15 @@ nav {
 .nav-cta { display: flex; align-items: center; gap: 12px; }
 .btn-ghost { font-size: 0.875rem; font-weight: 500; color: var(--muted); background: none; border: none; cursor: pointer; transition: color 0.2s; }
 .btn-ghost:hover { color: var(--text); }
-.btn-primary { font-size: 0.875rem; font-weight: 600; color: var(--accent-text); background: var(--accent); border: none; border-radius: 8px; padding: 10px 20px; cursor: pointer; transition: opacity 0.2s, transform 0.15s; }
+.btn-primary { font-size: 0.875rem; font-weight: 600; color: var(--accent-text); background: var(--accent); border: none; border-radius: 8px; padding: 10px 20px; cursor: pointer; transition: opacity 0.2s, transform 0.15s; display: inline-flex; align-items: center; gap: 8px; }
 .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
 .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; color: var(--text); }
 .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--border); padding: 24px 32px; flex-direction: column; gap: 20px; z-index: 99; }
 .mobile-menu.open { display: flex; }
 .mobile-menu a { font-size: 1rem; font-weight: 500; color: var(--muted); transition: color 0.2s; }
 .mobile-menu a:hover { color: var(--text); }
-.mobile-menu .btn-primary { text-align: center; }
+.mobile-menu .btn-primary { text-align: center; justify-content: center; }
+/* HERO */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -72,8 +75,11 @@ nav {
   justify-content: center;
   text-align: center;
   padding: 120px 32px 80px;
+  position: relative;
+  overflow: hidden;
 }
-.hero-inner { max-width: 680px; }
+#hero-canvas { position: absolute; inset: 0; z-index: 0; }
+.hero-inner { max-width: 680px; position: relative; z-index: 1; }
 .hero h1 {
   font-size: clamp(2.8rem, 6vw, 5rem);
   font-weight: 700;
@@ -93,343 +99,292 @@ nav {
 .hero-actions { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
 .hero-actions .btn-primary { font-size: 0.9rem; padding: 13px 28px; }
 .hero-actions .btn-ghost { font-size: 0.9rem; }
+/* LOGOS */
 .logos-bar { padding: 48px 32px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 .logos-bar-inner { max-width: var(--max); margin: 0 auto; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 40px; }
 .logos-label { font-size: 0.8rem; font-weight: 500; color: #9ca3af; letter-spacing: 0.06em; text-transform: uppercase; width: 100%; text-align: center; margin-bottom: 8px; }
 .logo-item { font-size: 0.95rem; font-weight: 700; color: #9ca3af; letter-spacing: -0.02em; transition: color 0.2s; }
 .logo-item:hover { color: var(--text); }
+/* SECTIONS */
 section { padding: 96px 32px; }
 .section-inner { max-width: var(--max); margin: 0 auto; }
 .section-label { font-size: 0.78rem; font-weight: 600; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; }
 .section-title { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 16px; }
 .section-sub { font-size: 1.05rem; color: var(--muted); line-height: 1.7; max-width: 520px; }
+/* FEATURES */
 .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 64px; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
 .feature-card { padding: 40px 36px; background: var(--bg); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); transition: background 0.2s; }
 .feature-card:hover { background: var(--surface); }
 .feature-icon { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 20px; color: var(--text); }
 .feature-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 10px; }
 .feature-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+/* HOW */
 .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 64px; }
-.how-step { }
 .step-num { font-size: 0.78rem; font-weight: 700; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 16px; }
 .how-step h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 10px; }
 .how-step p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+/* PRICING */
 .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 64px; }
-.pricing-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 40px 36px; background: var(--bg); display: flex; flex-direction: column; }
-.pricing-card.featured { background: var(--text); color: var(--accent-text); border-color: var(--text); }
-.pricing-card.featured .muted { color: #9ca3af; }
-.pricing-card.featured .btn-outline { background: #fff; color: #000; border-color: #fff; }
-.plan-name { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 24px; color: var(--muted); }
-.pricing-card.featured .plan-name { color: #9ca3af; }
-.plan-price { font-size: 3rem; font-weight: 700; letter-spacing: -0.04em; line-height: 1; margin-bottom: 8px; }
-.plan-period { font-size: 0.875rem; color: var(--muted); margin-bottom: 32px; }
-.pricing-card.featured .plan-period { color: #9ca3af; }
-.plan-features { list-style: none; margin-bottom: 40px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
-.plan-features li { font-size: 0.9rem; display: flex; align-items: center; gap: 10px; }
-.plan-features li svg { flex-shrink: 0; }
-.btn-outline { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; background: none; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: background 0.2s, color 0.2s; }
+.pricing-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 40px 32px; transition: box-shadow 0.2s, transform 0.2s; }
+.pricing-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); transform: translateY(-2px); }
+.pricing-card.featured { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
+.pricing-card.featured .plan-price-muted,
+.pricing-card.featured .plan-desc,
+.pricing-card.featured .plan-feature { color: rgba(255,255,255,0.65); }
+.pricing-card.featured .plan-label { color: rgba(255,255,255,0.6); }
+.pricing-card.featured .btn-outline { background: #fff; color: #0f0f0f; border-color: #fff; }
+.plan-label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+.plan-price { font-size: 2.8rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 8px; line-height: 1; }
+.plan-price-muted { font-size: 1rem; font-weight: 400; color: var(--muted); }
+.plan-desc { font-size: 0.9rem; color: var(--muted); margin-bottom: 32px; }
+.plan-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+.plan-feature { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; }
+.btn-outline { font-size: 0.875rem; font-weight: 600; border: 1px solid var(--border); border-radius: 8px; padding: 11px 20px; background: none; cursor: pointer; width: 100%; transition: background 0.2s, color 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
 .btn-outline:hover { background: var(--surface); }
-.btn-filled { width: 100%; padding: 12px; border: none; border-radius: 8px; background: #fff; color: #000; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
-.btn-filled:hover { opacity: 0.88; }
+/* TESTIMONIALS */
 .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 64px; }
-.testimonial-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; background: var(--bg); }
-.testimonial-card blockquote { font-size: 0.95rem; line-height: 1.7; color: var(--text); margin-bottom: 24px; }
+.testimonial-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; background: var(--surface); transition: box-shadow 0.2s; }
+.testimonial-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+.testimonial-stars { display: flex; gap: 3px; margin-bottom: 16px; color: #0f0f0f; }
+.testimonial-card p { font-size: 0.9rem; color: var(--text); line-height: 1.7; margin-bottom: 24px; }
 .testimonial-author { display: flex; align-items: center; gap: 12px; }
-.author-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; background: var(--surface); }
-.author-name { font-size: 0.875rem; font-weight: 600; }
-.author-title { font-size: 0.8rem; color: var(--muted); }
-.faq-list { margin-top: 64px; display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
-.faq-item { border-bottom: 1px solid var(--border); }
+.testimonial-avatar { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; background: var(--border); }
+.testimonial-name { font-size: 0.875rem; font-weight: 600; }
+.testimonial-role { font-size: 0.8rem; color: var(--muted); }
+/* FAQ */
+.faq-list { margin-top: 64px; display: flex; flex-direction: column; gap: 2px; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.faq-item { border-bottom: 1px solid var(--border); background: var(--bg); }
 .faq-item:last-child { border-bottom: none; }
-.faq-q { width: 100%; background: none; border: none; padding: 24px 28px; display: flex; align-items: center; justify-content: space-between; font-size: 0.95rem; font-weight: 600; text-align: left; cursor: pointer; transition: background 0.2s; }
-.faq-q:hover { background: var(--surface); }
-.faq-a { display: none; padding: 0 28px 24px; font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
-.faq-a.open { display: block; }
-.cta-section { background: var(--text); color: var(--accent-text); text-align: center; }
+.faq-question { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 24px 32px; background: none; border: none; cursor: pointer; font-size: 0.95rem; font-weight: 600; text-align: left; gap: 16px; transition: background 0.15s; }
+.faq-question:hover { background: var(--surface); }
+.faq-answer { font-size: 0.9rem; color: var(--muted); line-height: 1.7; padding: 0 32px 24px; display: none; }
+.faq-answer.open { display: block; }
+.faq-icon { flex-shrink: 0; transition: transform 0.2s; }
+.faq-icon.open { transform: rotate(45deg); }
+/* CTA */
+.cta-section { background: var(--accent); color: var(--accent-text); text-align: center; border-radius: 0; }
 .cta-section .section-title { color: #fff; }
-.cta-section .section-sub { color: #9ca3af; margin: 0 auto 40px; }
-.cta-actions { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
-.btn-white { font-size: 0.9rem; font-weight: 600; color: #000; background: #fff; border: none; border-radius: 8px; padding: 13px 28px; cursor: pointer; transition: opacity 0.2s; }
-.btn-white:hover { opacity: 0.88; }
-.btn-ghost-white { font-size: 0.9rem; font-weight: 500; color: #9ca3af; background: none; border: none; cursor: pointer; transition: color 0.2s; }
-.btn-ghost-white:hover { color: #fff; }
+.cta-section .section-sub { color: rgba(255,255,255,0.65); margin: 0 auto 40px; }
+.cta-section .btn-white { font-size: 0.9rem; font-weight: 600; background: #fff; color: #0f0f0f; border: none; border-radius: 8px; padding: 13px 28px; cursor: pointer; transition: opacity 0.2s, transform 0.15s; display: inline-flex; align-items: center; gap: 8px; }
+.cta-section .btn-white:hover { opacity: 0.9; transform: translateY(-1px); }
+/* FOOTER */
 footer { padding: 64px 32px 40px; border-top: 1px solid var(--border); }
-.footer-inner { max-width: var(--max); margin: 0 auto; }
-.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+.footer-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
 .footer-brand p { font-size: 0.875rem; color: var(--muted); line-height: 1.7; margin-top: 12px; max-width: 260px; }
-.footer-col h4 { font-size: 0.85rem; font-weight: 600; margin-bottom: 16px; }
+.footer-col h4 { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
 .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.footer-col ul li a { font-size: 0.875rem; color: var(--muted); transition: color 0.2s; }
-.footer-col ul li a:hover { color: var(--text); }
+.footer-col ul a { font-size: 0.875rem; color: var(--muted); transition: color 0.2s; }
+.footer-col ul a:hover { color: var(--text); }
 .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 32px; border-top: 1px solid var(--border); }
 .footer-bottom p { font-size: 0.8rem; color: var(--muted); }
 .footer-social { display: flex; gap: 16px; }
 .footer-social a { color: var(--muted); transition: color 0.2s; }
 .footer-social a:hover { color: var(--text); }
+/* RESPONSIVE */
 @media (max-width: 768px) {
-  .nav-links, .nav-cta { display: none; }
+  .nav-links { display: none; }
   .hamburger { display: flex; }
-  .features-grid, .how-grid, .pricing-grid, .testimonials-grid { grid-template-columns: 1fr; }
-  .footer-top { grid-template-columns: 1fr 1fr; }
+  .features-grid { grid-template-columns: 1fr; }
+  .how-grid { grid-template-columns: 1fr; gap: 32px; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+}
+@media (max-width: 480px) {
+  .footer-inner { grid-template-columns: 1fr; }
 }
 </style>
 </head>
-<body>
+<body x-data="{ mobileOpen: false }">
+
+<!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <span class="logo">FlowSync</span>
+    <div class="logo">FlowSync</div>
     <ul class="nav-links">
       <li><a href="#features">Features</a></li>
-      <li><a href="#how">How it works</a></li>
+      <li><a href="#product">Product</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
     <div class="nav-cta">
       <button class="btn-ghost">Log in</button>
-      <button class="btn-primary">Get started</button>
+      <button class="btn-primary"><i data-lucide="zap" style="width:15px;height:15px;"></i> Get started</button>
     </div>
-    <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
-      <i data-lucide="menu" width="22" height="22"></i>
+    <button class="hamburger" @click="mobileOpen = !mobileOpen" aria-label="Menu">
+      <i data-lucide="menu" style="width:22px;height:22px;"></i>
     </button>
   </div>
 </nav>
-<div class="mobile-menu">
-  <a href="#features">Features</a>
-  <a href="#how">How it works</a>
-  <a href="#pricing">Pricing</a>
-  <a href="#faq">FAQ</a>
-  <button class="btn-primary">Get started</button>
+<div class="mobile-menu" :class="{ open: mobileOpen }">
+  <a href="#features" @click="mobileOpen=false">Features</a>
+  <a href="#product" @click="mobileOpen=false">Product</a>
+  <a href="#pricing" @click="mobileOpen=false">Pricing</a>
+  <a href="#faq" @click="mobileOpen=false">FAQ</a>
+  <button class="btn-primary" style="justify-content:center;"><i data-lucide="zap" style="width:15px;height:15px;"></i> Get started free</button>
 </div>
 
+<!-- HERO -->
 <section class="hero">
+  <canvas id="hero-canvas"></canvas>
   <div class="hero-inner">
     <h1>Ship faster,<br>together.</h1>
     <p>FlowSync brings your team's work into one clean workspace. Less busywork, more output.</p>
     <div class="hero-actions">
-      <button class="btn-primary">Start for free</button>
+      <button class="btn-primary"><i data-lucide="zap" style="width:15px;height:15px;"></i> Start for free</button>
       <button class="btn-ghost">See how it works →</button>
     </div>
   </div>
 </section>
 
+<!-- LOGOS -->
 <div class="logos-bar">
   <div class="logos-bar-inner">
     <span class="logos-label">Trusted by teams at</span>
+    <span class="logo-item">Stripe</span>
+    <span class="logo-item">Notion</span>
     <span class="logo-item">Linear</span>
     <span class="logo-item">Vercel</span>
-    <span class="logo-item">Notion</span>
-    <span class="logo-item">Stripe</span>
-    <span class="logo-item">Loom</span>
     <span class="logo-item">Figma</span>
+    <span class="logo-item">Loom</span>
   </div>
 </div>
 
+<!-- FEATURES -->
 <section id="features">
   <div class="section-inner">
-    <div class="section-label">Features</div>
-    <h2 class="section-title">Everything your team needs</h2>
-    <p class="section-sub">Built for modern teams who move fast and need tools that keep up.</p>
+    <div data-aos="fade-up">
+      <div class="section-label">Features</div>
+      <h2 class="section-title">Everything your team needs</h2>
+      <p class="section-sub">Built for modern teams that move fast and ship often.</p>
+    </div>
     <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon"><i data-lucide="zap" width="20" height="20"></i></div>
-        <h3>Instant sync</h3>
-        <p>Changes reflect across your whole team in real time. No refresh needed, no version conflicts.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i data-lucide="layout-dashboard" width="20" height="20"></i></div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="feature-icon"><i data-lucide="layers" style="width:20px;height:20px;"></i></div>
         <h3>Unified workspace</h3>
-        <p>Tasks, docs, and conversations in one place. Stop switching between five tools to get one thing done.</p>
+        <p>Docs, tasks, and conversations — all in one place. No more tab switching.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i data-lucide="bar-chart-2" width="20" height="20"></i></div>
-        <h3>Progress at a glance</h3>
-        <p>Visual dashboards that show exactly where every project stands. Always.</p>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="60">
+        <div class="feature-icon"><i data-lucide="git-branch" style="width:20px;height:20px;"></i></div>
+        <h3>Version control</h3>
+        <p>Every change tracked. Roll back to any point in history with one click.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i data-lucide="lock" width="20" height="20"></i></div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="120">
+        <div class="feature-icon"><i data-lucide="zap" style="width:20px;height:20px;"></i></div>
+        <h3>Instant sync</h3>
+        <p>Real-time collaboration across your entire team. Always in sync, never blocked.</p>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="feature-icon"><i data-lucide="shield-check" style="width:20px;height:20px;"></i></div>
         <h3>Enterprise security</h3>
-        <p>SOC 2 Type II certified. SSO, audit logs, and granular permissions included on every plan.</p>
+        <p>SOC 2 Type II, SSO, and audit logs. Security that scales with your team.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i data-lucide="plug" width="20" height="20"></i></div>
-        <h3>Deep integrations</h3>
-        <p>Connect GitHub, Slack, Figma, and 80+ tools. FlowSync fits into how you already work.</p>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="60">
+        <div class="feature-icon"><i data-lucide="bar-chart-2" style="width:20px;height:20px;"></i></div>
+        <h3>Analytics</h3>
+        <p>Understand how your team works. Spot bottlenecks before they slow you down.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon"><i data-lucide="cpu" width="20" height="20"></i></div>
-        <h3>AI assist</h3>
-        <p>Auto-summarize threads, generate task breakdowns, and surface blockers before they slow you down.</p>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="120">
+        <div class="feature-icon"><i data-lucide="plug" style="width:20px;height:20px;"></i></div>
+        <h3>200+ integrations</h3>
+        <p>GitHub, Slack, Figma, Jira and more. FlowSync fits into your existing stack.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="how" style="background: var(--surface);">
+<!-- HOW IT WORKS -->
+<section id="product" style="background: var(--surface);">
   <div class="section-inner">
-    <div class="section-label">How it works</div>
-    <h2 class="section-title">Up and running in minutes</h2>
-    <p class="section-sub">No lengthy onboarding. No consultant required. Just sign up and go.</p>
+    <div data-aos="fade-up">
+      <div class="section-label">How it works</div>
+      <h2 class="section-title">Up and running in minutes</h2>
+      <p class="section-sub">No setup calls. No implementation fees. Just sign up and go.</p>
+    </div>
     <div class="how-grid">
-      <div class="how-step">
+      <div class="how-step" data-aos="fade-up" data-aos-delay="0">
         <div class="step-num">01</div>
         <h3>Create your workspace</h3>
-        <p>Set up your team in under two minutes. Invite members, set roles, and you're ready.</p>
+        <p>Sign up, invite your team, and set up your first project in under two minutes.</p>
       </div>
-      <div class="how-step">
+      <div class="how-step" data-aos="fade-up" data-aos-delay="80">
         <div class="step-num">02</div>
         <h3>Connect your tools</h3>
-        <p>Link GitHub, Slack, Notion, or whatever you use. FlowSync pulls everything into one view.</p>
+        <p>Link GitHub, Slack, Figma, and everything else your team already uses.</p>
       </div>
-      <div class="how-step">
+      <div class="how-step" data-aos="fade-up" data-aos-delay="160">
         <div class="step-num">03</div>
         <h3>Ship together</h3>
-        <p>Track progress, unblock teammates, and close work faster than you ever did before.</p>
+        <p>Assign tasks, track progress, and ship features without the chaos.</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- PRICING -->
 <section id="pricing">
   <div class="section-inner">
-    <div class="section-label">Pricing</div>
-    <h2 class="section-title">Simple, honest pricing</h2>
-    <p class="section-sub">No hidden fees. No surprise overages. Cancel any time.</p>
+    <div data-aos="fade-up">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">Simple, transparent pricing</h2>
+      <p class="section-sub">No hidden fees. No surprises. Cancel anytime.</p>
+    </div>
     <div class="pricing-grid">
-      <div class="pricing-card">
-        <div class="plan-name">Starter</div>
-        <div class="plan-price">$0</div>
-        <div class="plan-period">Free forever · up to 5 seats</div>
+      <div class="pricing-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="plan-label">Starter</div>
+        <div class="plan-price">$0<span class="plan-price-muted">/mo</span></div>
+        <p class="plan-desc">For individuals getting started.</p>
         <ul class="plan-features">
-          <li><i data-lucide="check" width="16" height="16"></i> 3 active projects</li>
-          <li><i data-lucide="check" width="16" height="16"></i> 1 GB storage</li>
-          <li><i data-lucide="check" width="16" height="16"></i> Core integrations</li>
-          <li><i data-lucide="check" width="16" height="16"></i> Community support</li>
+          <li class="plan-feature"><i data-lucide="check" style="width:16px;height:16px;flex-shrink:0;"></i> Up to 3 projects</li>
+          <li class="plan-feature"><i data-lucide="check" style="width:16px;height:16px;flex-shrink:0;"></i> 1 workspace</li>
+          <li class="plan-feature"><i data-lucide="check" style="width:16px;height:16px;flex-shrink:0;"></i> 5GB storage</li>
+          <li class="plan-feature"><i data-lucide="check" style="width:16px;height:16px;flex-shrink:0;"></i> Community support</li>
         </ul>
         <button class="btn-outline">Get started free</button>
       </div>
-      <div class="pricing-card featured">
-        <div class="plan-name">Pro</div>
-        <div class="plan-price">$18</div>
-        <div class="plan-period">per seat / month</div>
+      <div class="pricing-card featured" data-aos="fade-up" data-aos-delay="80">
+        <div class="plan-label">Pro</div>
+        <div class="plan-price">$24<span class="plan-price-muted">/mo</span></div>
+        <p class="plan-desc">For growing teams that ship fast.</p>
         <ul class="plan-features">
-          <li><i data-lucide="check" width="16" height="16"></i> Unlimited projects</li>
-          <li><i data-lucide="check" width="16" height="16"></i> 50 GB storage</li>
-          <li><i data-lucide="check" width="16" height="16"></i> All integrations</li>
-          <li><i data-lucide="check" width="16" height="16"></i> AI assist</li>
-          <li><i data-lucide="check" width="16" height="16"></i> Priority support</li>
+          <li class="plan-feature"><i data-lucide="check" style="width:16px;height:16px;flex-shrink:0;"></i> Unlimited projects</li>
+          <li class="plan-feature"><i data-lucide="check" style="width:16px;height:16px;flex-shrink:0;"></i> Up to 20 members</li>
+          <li class="plan-feature"><i data-lucide="check" style="width:16px;height:16px;flex-shrink:0;"></i> 100GB storage</li>
+          <li class="plan-feature"><i data-lucide="check" style="width:16px;height:16px;flex-shrink:0;"></i> Priority support</li>
+          <li class="plan-feature"><i data-lucide="check" style="width:16px;height:16px;flex-shrink:0;"></i> Advanced analytics</li>
         </ul>
-        <button class="btn-filled">Start free trial</button>
+        <button class="btn-outline"><i data-lucide="zap" style="width:15px;height:15px;"></i> Start free trial</button>
       </div>
-      <div class="pricing-card">
-        <div class="plan-name">Enterprise</div>
+      <div class="pricing-card" data-aos="fade-up" data-aos-delay="160">
+        <div class="plan-label">Enterprise</div>
         <div class="plan-price">Custom</div>
-        <div class="plan-period">Volume pricing available</div>
+        <p class="plan-desc">For large teams with custom needs.</p>
         <ul class="plan-features">
-          <li><i data-lucide="check" width="16" height="16"></i> Everything in Pro</li>
-          <li><i data-lucide="check" width="16" height="16"></i> SSO & SCIM</li>
-          <li><i data-lucide="check" width="16" height="16"></i> Audit logs</li>
-          <li><i data-lucide="check" width="16" height="16"></i> SLA guarantee</li>
-          <li><i data-lucide="check" width="16" height="16"></i> Dedicated CSM</li>
+          <li class="plan-feature"><i data-lucide="check" style="width:16px;height:16px;flex-shrink:0;"></i> Unlimited everything</li>
+          <li class="plan-feature"><i data-lucide="check" style="width:16px;height:16px;flex-shrink:0;"></i> SSO & SAML</li>
+          <li class="plan-feature"><i data-lucide="check" style="width:16px;height:16px;flex-shrink:0;"></i> Audit logs</li>
+          <li class="plan-feature"><i data-lucide="check" style="width:16px;height:16px;flex-shrink:0;"></i> Dedicated support</li>
+          <li class="plan-feature"><i data-lucide="check" style="width:16px;height:16px;flex-shrink:0;"></i> SLA guarantee</li>
         </ul>
-        <button class="btn-outline">Talk to sales</button>
+        <button class="btn-outline">Talk to sales <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></button>
       </div>
     </div>
   </div>
 </section>
 
-<section id="testimonials" style="background: var(--surface);">
+<!-- TESTIMONIALS -->
+<section style="background: var(--surface);">
   <div class="section-inner">
-    <div class="section-label">Testimonials</div>
-    <h2 class="section-title">Teams that made the switch</h2>
-    <p class="section-sub">Don't take our word for it.</p>
+    <div data-aos="fade-up">
+      <div class="section-label">Testimonials</div>
+      <h2 class="section-title">Loved by teams worldwide</h2>
+      <p class="section-sub">Don't take our word for it.</p>
+    </div>
     <div class="testimonials-grid">
-      <div class="testimonial-card">
-        <blockquote>"FlowSync cut our weekly syncs from three meetings down to one. The async visibility is just that good."</blockquote>
-        <div class="testimonial-author">
-          <img class="author-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&q=80" alt="Sara Kim" />
-          <div>
-            <div class="author-name">Sara Kim</div>
-            <div class="author-title">Head of Product, Loom</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card">
-        <blockquote>"We evaluated six tools. FlowSync was the only one our engineers didn't immediately complain about."</blockquote>
-        <div class="testimonial-author">
-          <img class="author-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80" alt="Marcus Webb" />
-          <div>
-            <div class="author-name">Marcus Webb</div>
-            <div class="author-title">CTO, Daylight</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card">
-        <blockquote>"Our remote team finally feels like we're in the same room. Shipping velocity is up 40% since we switched."</blockquote>
-        <div class="testimonial-author">
-          <img class="author-avatar" src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=80&q=80" alt="Priya Nair" />
-          <div>
-            <div class="author-name">Priya Nair</div>
-            <div class="author-title">Engineering Manager, Scale AI</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="faq">
-  <div class="section-inner">
-    <div class="section-label">FAQ</div>
-    <h2 class="section-title">Questions we get a lot</h2>
-    <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          <span>Is there a free plan?</span>
-          <i data-lucide="chevron-down" width="18" height="18"></i>
-        </button>
-        <div class="faq-a">Yes — the Starter plan is free forever for teams up to 5 seats. No credit card required.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          <span>Can I migrate from another tool?</span>
-          <i data-lucide="chevron-down" width="18" height="18"></i>
-        </button>
-        <div class="faq-a">We support one-click imports from Asana, Jira, Linear, and Notion. Most teams are fully migrated within a day.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          <span>How does billing work for growing teams?</span>
-          <i data-lucide="chevron-down" width="18" height="18"></i>
-        </button>
-        <div class="faq-a">You're billed per seat, prorated daily. Add or remove members any time and your invoice adjusts automatically.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          <span>What's your uptime SLA?</span>
-          <i data-lucide="chevron-down" width="18" height="18"></i>
-        </button>
-        <div class="faq-a">99.9% uptime on Pro. Enterprise plans include a 99.99% SLA with dedicated infrastructure.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          <span>Do you support SSO?</span>
-          <i data-lucide="chevron-down" width="18" height="18"></i>
-        </button>
-        <div class="faq-a">SSO via SAML 2.0 and SCIM provisioning are available on the Enterprise plan.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="cta-section">
-  <div class="section-inner">
-    <h2 class="section-title">Ready to move faster?</h2>
-    <p class="section-sub">Join thousands of teams already shipping with FlowSync.</p>
-    <div class="cta-actions">
-      <button class="btn-white">Start for free</button>
-      <button class="btn-ghost-white">Talk to sales →</button>
-    </div>
-  </div>
-</section>
-
-<footer
+      <div class="testimonial-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="testimonial-stars">
+          <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
+          <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
+          <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
+          <i data-lucide="star
